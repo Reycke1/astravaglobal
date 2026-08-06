@@ -1,0 +1,479 @@
+/* ==========================================================================
+   Astrava Global — Cosmic Dark Mode Stylesheet
+   ========================================================================== */
+
+:root {
+  --bg-midnight: #0A0B10;
+  --text-starlight: #FFFFFF;
+  --text-muted: #A0A5B5;
+  --nebula-purple: #8A2BE2;
+  --nebula-indigo: #4B0082;
+  --electric-cyan: #00FFFF;
+  --card-bg: rgba(20, 22, 32, 0.6);
+  --card-border: rgba(138, 43, 226, 0.2);
+  --glow-cyan: rgba(0, 255, 255, 0.4);
+  --glow-purple: rgba(138, 43, 226, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-midnight);
+  color: var(--text-starlight);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Typography Headings */
+h1, h2, h3, .logo {
+  font-family: 'Syne', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10, 11, 16, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo-wrapper {
+  width: 210px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-wrapper svg {
+  width: 100%;
+  height: auto;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  border-color: var(--electric-cyan) !important;
+  color: var(--electric-cyan) !important;
+}
+
+.btn-nav {
+  border: 1px solid var(--card-border);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  background: rgba(138, 43, 226, 0.1);
+}
+
+.btn-nav:hover {
+  border-color: var(--electric-cyan) !important;
+  color: var(--electric-cyan) !important;
+}
+
+/* ==========================================================================
+   Hero Section — Full-Width Background & Centered Layout
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px; /* Precise offset clearance for fixed navigations */
+  text-align: center;
+}
+
+/* Immersive Full-Width Hero Canvas Backdrop */
+.hero-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* High-Performance Canvas Asset Rendering */
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Complete screen viewport coverage protection */
+  display: block;
+}
+
+/* Foreground Interactive Content Alignment */
+.hero-content {
+  position: relative;
+  z-index: 2; /* Forces content layout stack above background wrapper assets */
+  max-width: 900px;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+}
+
+/* Subheading Element featuring Vertical Purple-to-Cyan Gradient Pulse */
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.23rem);
+  margin-top: 30rem;
+  margin-bottom: 0.7rem;
+  max-width: 900px;
+  line-height: 1.6;
+  opacity: 80%;
+  
+  /* Muted fallback foundation color for characters outside the moving ray */
+  color: rgb(197 198 202 / 8%); 
+
+  /* Vertical multi-color light core (180deg Top-to-Bottom alignment) */
+  background-image: repeating-linear-gradient(120deg, #3d716842 10%, #00fffffa 45%, /* Signature Nebula Purple Core entry */ #ffffff 55%, /* Fluid translation into Electric Neon Cyan */ transparent 65%);
+  /* Expand texture map space allowing the beam to sweep cleanly down the block */
+  background-size: 200% auto;
+  background-position: 100% 0%;
+  
+  /* Clip color matrix maps explicitly into letter shapes */
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+  /* Bypasses layout engine masking bugs to draw text depth without overlapping text-fills */
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.95));
+  
+  /* Infinite cascading sweep cycle */
+   animation: horizontalGradientPulse 7.5s ease-in-out infinite;
+}
+
+/* High-Impact Brand Call to Action Interaction */
+.btn-primary {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-starlight);
+  background: linear-gradient(135deg, #81e2d796, #063f5040);
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px var(--glow-purple);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Interactive Hover States */
+.btn-primary:hover {
+  box-shadow: 0 0 30px var(--glow-cyan);
+  border-color: var(--electric-cyan);
+  color: #f5f9f9; /* Resolved original syntax error (removed trailing bracket anomaly) */
+  transform: translateY(-2px);
+}
+
+/* Keyframe Loop governing the horizontal X-Axis shifting track */
+@keyframes horizontalGradientPulse {
+  0% {
+    background-position: 150% 0;
+  }
+  60%, 100% {
+    /* Pushes full multi-color gradient array entirely past the right edge of the text */
+    background-position: -50% 0;
+  }
+}
+
+/* Common Section Layout */
+section {
+  padding: 6rem 5%;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  color: var(--text-muted);
+}
+
+/* Glassmorphism Cards */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 255, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Services Section */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.service-card.featured {
+  border-color: var(--nebula-purple);
+  box-shadow: 0 0 20px var(--glow-purple);
+}
+
+.tier-tag {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--electric-cyan);
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-list {
+  list-style: none;
+  margin-top: auto;
+}
+
+.service-list li {
+  font-size: 0.9rem;
+  color: var(--text-starlight);
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.service-list li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--electric-cyan);
+}
+
+/* Portfolio Section */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolio-card {
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+.portfolio-preview {
+  height: 200px;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.mockup-1 { background: linear-gradient(135deg, #111, #2d1a3a); }
+.mockup-2 { background: linear-gradient(135deg, #051a24, #0a3d42); }
+.mockup-3 { background: linear-gradient(135deg, #1c0a2a, #0a0b10); }
+
+.mockup-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 11, 16, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+}.mockup-overlay:hover {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 11, 16, 0.434);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-overlay span {
+  border: 1px solid rgba(249, 253, 253, 0);
+  color: rgba(249, 253, 253, 0);
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  background: rgba(249, 253, 253, 0);
+}
+.mockup-overlay span:hover {
+   border: 1px solid var(--electric-cyan);
+  color: var(--electric-cyan) !important;
+   background: rgba(51, 51, 51, 0.37);
+}
+
+
+.portfolio-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.portfolio-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* CEO Section */
+.ceo-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.ceo-image-wrapper {
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+}
+
+.ceo-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ceo-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.ceo-content p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* Contact Section */
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text-starlight);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contact-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  border-color: #25D366;
+  box-shadow: 0 0 25px rgba(37, 211, 102, 0.3);
+  color: #25D366;
+}
+
+.gmail-btn:hover {
+  border-color: #EA4335;
+  box-shadow: 0 0 25px rgba(234, 67, 53, 0.3);
+  color: #EA4335;
+}
+
+.contact-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 3rem 5%;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 850px) {
+  .ceo-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+}
