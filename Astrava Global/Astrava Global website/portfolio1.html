@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Screen Background</title>
+  <style>
+    /* Reset margins and hidden scrollbars */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Prevents scrollbars from appearing */
+      background-color: #000; /* Fallback color while image loads */
+    }
+
+    /* The full screen image container */
+    .fullscreen-bg {
+      width: 100%;
+      height: 100%;
+      /* REPLACE THE PATH BELOW WITH YOUR IMAGE */
+      background-image: url('images/Gemini_Generated_Image_ppz238ppz238ppz2.png'); 
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain; /* Forces image to scale and fill the screen */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Single background container with no text or layout elements -->
+  <div class="fullscreen-bg"></div>
+
+</body>
+</html>
